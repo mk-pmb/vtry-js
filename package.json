@@ -1,0 +1,35 @@
+{ "name": "vtry",
+  "version": "1.0.0",
+  "description": "tryit + verror = Verbosely try.",
+  "keywords": [ "error", "errors", "try" ],
+
+  "author": "M.K. (https://github.com/mk-pmb)",
+  "homepage": "https://github.com/mk-pmb/vtry-js/#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk-pmb/vtry-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mk-pmb/vtry-js/issues"
+  },
+  "contributors": [],
+
+  "private": false, "license": "ISC",
+
+  "main": "vtry.node.js",
+  "scripts": { "test": "nodejs test/all.node.js" },
+  "directories": { "test": "test" },
+
+  "dependencies": {
+    "esmod-pmb": "^0.1.5",
+    "verror": "^1.10.0"
+  },
+  "devDependencies": {
+    "p-tape": "^3.0.0",
+    "perish": "^1.0.2",
+    "usnam-pmb": "^0.2.3"
+  },
+
+
+  "npm vs. BOM = Unexpected token": "-*- coding: UTF-8 -*-"
+}
