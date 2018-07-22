@@ -19,8 +19,10 @@ test('basics', async (t) => {
   t.throws(() => parseOrAnnotate(badLoca),
     /Cannot parse location: Unexpected token/);
 
-  const parseOrCapture = vtry(JSON.parse,
-    err => ({ error: err.name, msg: err.message.slice(0, 16) }));
+  const parseOrCapture = vtry(JSON.parse, err => ({
+    error: err.name,
+    msg: err.message.slice(0, 16),
+  }));
   t.deepEqual(parseOrCapture(okLoca), { lat: 0, lon: 0 });
   t.deepEqual(parseOrCapture(badLoca),
     { error: 'SyntaxError', msg: 'Unexpected token' });

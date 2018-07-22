@@ -44,6 +44,19 @@ It will be used as the `sprintf_args` to `VError`.
 
 
 
+&nbsp;
+
+### Promise API
+
+There's also a method `vtry.pr` ("Promise") which works almost as above,
+except it takes an async function `f` and returns an async function `g`.
+As a special convenience, supplying `1` (the number) as `f` is a shorthand
+for the identity function, so you can easily pass existing promises to `g`.
+
+
+
+
+
 
 <!--#toc stop="scan" -->
 

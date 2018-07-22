@@ -1,5 +1,5 @@
 { "name": "vtry",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tryit + verror = Verbosely try.",
   "keywords": [ "error", "errors", "try" ],
 
@@ -27,6 +27,7 @@
   "devDependencies": {
     "p-tape": "^3.0.0",
     "perish": "^1.0.2",
+    "rejected-or-not": "^1.0.0",
     "usnam-pmb": "^0.2.3"
   },
 
