@@ -3,5 +3,5 @@
 import 'perish';
 import 'usnam-pmb';
 
-import './basics.mjs';
-import './promise.mjs';
+import './basics';
+import './promise';

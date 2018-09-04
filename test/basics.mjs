@@ -4,7 +4,7 @@ import test from 'p-tape';
 import vtry from '../vtry.node';
 
 test('basics', async (t) => {
-  t.plan(6);
+  t.plan(7);
 
   const dataType = 'location';
   const okLoca = '{"lat":0,"lon":0}';
@@ -26,4 +26,8 @@ test('basics', async (t) => {
   t.deepEqual(parseOrCapture(okLoca), { lat: 0, lon: 0 });
   t.deepEqual(parseOrCapture(badLoca),
     { error: 'SyntaxError', msg: 'Unexpected token' });
+
+  function rethrow(x) { throw x; }
+  t.throws(() => vtry(rethrow, 'w00t')('Oh noes!'),
+    /w00t: non-object cause: string "Oh noes!"$/);
 });
