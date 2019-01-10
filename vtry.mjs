@@ -21,10 +21,18 @@ function vtry(f, ...a) {
 
 
 function makeRethrower(msg, opt) {
-  return (err) => { throw safeVError(reCause(opt, err), msg); };
+  const origStack = (new Error('trace')).stack;
+  return function rethrow(origErr) {
+    const err = safeVError(reCause(opt, origErr), msg);
+    const osf = 'original stack for: ' + msg;
+    err.stack += ('\n»»»»» ' + osf + ' »»»»»\n¦ '
+      + origStack.split(/\n *(?=at )/).slice(4).join('\n¦ ')
+      + '\n««««« ' + osf + ' «««««').replace(/\n/g, '\n    ');
+    throw err;
+  };
 }
 
-vtry.makeHandler = (how, ...args) => {
+vtry.makeHandler = function makeVTryingHandler(how, ...args) {
   if (!how) { return () => undefined; }
   if (ifFun(how)) { return err => how(err, ...args); }
   return makeRethrower(how, ...args);
