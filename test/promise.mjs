@@ -7,7 +7,7 @@ import vtry from '../vtry.node';
 
 async function parseAsync(json) { return JSON.parse(json); }
 
-test('promise', async (t) => {
+test('promise', async(t) => {
   t.plan(6);
 
   const dataType = 'location';

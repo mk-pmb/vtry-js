@@ -3,7 +3,7 @@
 import test from 'p-tape';
 import vtry from '../vtry.node';
 
-test('basics', async (t) => {
+test('basics', async(t) => {
   t.plan(7);
 
   const dataType = 'location';
