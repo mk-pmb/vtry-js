@@ -20,14 +20,20 @@ function vtry(f, ...a) {
 }
 
 
+function quoteStack(descr, cutoff, src) {
+  const st = String((src || false).stack || src);
+  return ('\n»»»»» ' + descr + ' »»»»»\n¦ '
+    + st.split(/\n *(?=at )/).slice(cutoff).join('\n¦ ')
+    + '\n««««« ' + descr + ' «««««').replace(/\n/g, '\n    ');
+}
+
+
 function makeRethrower(msg, opt) {
-  const origStack = (new Error('trace')).stack;
+  const setupStack = (new Error('trace')).stack;
   return function rethrow(origErr) {
     const err = safeVError(reCause(opt, origErr), msg);
-    const osf = 'original stack for: ' + msg;
-    err.stack += ('\n»»»»» ' + osf + ' »»»»»\n¦ '
-      + origStack.split(/\n *(?=at )/).slice(4).join('\n¦ ')
-      + '\n««««« ' + osf + ' «««««').replace(/\n/g, '\n    ');
+    err.stack += quoteStack('original stack for: ' + msg, 0, origErr);
+    err.stack += quoteStack('setup stack for: ' + msg, 4, setupStack);
     throw err;
   };
 }
