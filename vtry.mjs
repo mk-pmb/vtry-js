@@ -1,4 +1,6 @@
-﻿import safeVError from './safe-verror';
+// -*- coding: utf-8, tab-width: 2 -*-
+
+import safeVError from './safe-verror';
 
 function ifFun(x, d) { return ((typeof x) === 'function' ? x : d); }
 function identity(x) { return x; }
