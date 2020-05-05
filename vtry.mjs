@@ -23,10 +23,12 @@ function vtry(f, ...a) {
 
 
 function quoteStack(descr, cutoff, src) {
-  const st = String((src || false).stack || src);
-  return ('\n»»»»» ' + descr + ' »»»»»\n¦ '
-    + st.split(/\n *(?=at )/).slice(cutoff).join('\n¦ ')
-    + '\n««««« ' + descr + ' «««««').replace(/\n/g, '\n    ');
+  let st = String((src || false).stack || src);
+  st = (st && st.split(/\n *(?=at )/).slice(cutoff
+    ).filter(Boolean).join('\n¦ '));
+  // Empty stack might result from incompatible error prettyprinting modules.
+  return ('\n»»»»» ' + descr + (st ? (' »»»»»\n¦ ' + st + '\n««««« ' + descr)
+    : ': (empty)') + ' «««««').replace(/\n/g, '\n    ');
 }
 
 
