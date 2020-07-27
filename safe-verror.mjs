@@ -3,7 +3,7 @@
 function reCause(opt, cause) { return { ...(opt || false), cause }; }
 
 function safeVError(opt, msg) {
-  if (!Array.isArray(msg)) { return safeVError(opt, [msg]); }
+  if (!Array.isArray(msg)) { return safeVError(opt, ['%s', msg]); }
   const { cause } = opt;
   if ((cause && typeof cause) !== 'object') {
     const bad = new TypeError(`non-object cause: ${typeof cause} "${cause}"`);

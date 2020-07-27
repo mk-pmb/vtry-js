@@ -1,5 +1,5 @@
 { "name": "vtry",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "tryit + verror = Verbosely try.",
   "keywords": [ "error", "errors", "try" ],
 
