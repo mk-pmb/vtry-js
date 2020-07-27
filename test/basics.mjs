@@ -11,11 +11,11 @@ test('basics', async(t) => {
   const badLoca = '{"lat":undefined,"lon":undefined}';
 
   const parseOrIgnore = vtry(JSON.parse);
-  t.deepEqual(parseOrIgnore(okLoca), { lat: 0, lon: 0 });
-  t.deepEqual(parseOrIgnore(badLoca), undefined);
+  t.same(parseOrIgnore(okLoca), { lat: 0, lon: 0 });
+  t.same(parseOrIgnore(badLoca), undefined);
 
   const parseOrAnnotate = vtry(JSON.parse, ['Cannot parse %s', dataType]);
-  t.deepEqual(parseOrAnnotate(okLoca), { lat: 0, lon: 0 });
+  t.same(parseOrAnnotate(okLoca), { lat: 0, lon: 0 });
   t.throws(() => parseOrAnnotate(badLoca),
     /Cannot parse location: Unexpected token/);
 
@@ -23,8 +23,8 @@ test('basics', async(t) => {
     error: err.name,
     msg: err.message.slice(0, 16),
   }));
-  t.deepEqual(parseOrCapture(okLoca), { lat: 0, lon: 0 });
-  t.deepEqual(parseOrCapture(badLoca),
+  t.same(parseOrCapture(okLoca), { lat: 0, lon: 0 });
+  t.same(parseOrCapture(badLoca),
     { error: 'SyntaxError', msg: 'Unexpected token' });
 
   function rethrow(x) { throw x; }
