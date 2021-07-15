@@ -3,7 +3,7 @@
 import test from 'p-tape';
 import testPromise from 'rejected-or-not';
 
-import vtry from '../vtry.node';
+import vtry from '../vtry.mjs';
 
 async function parseAsync(json) { return JSON.parse(json); }
 

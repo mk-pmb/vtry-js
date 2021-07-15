@@ -1,7 +1,7 @@
 // -*- coding: utf-8, tab-width: 2 -*-
 
 import test from 'p-tape';
-import vtry from '../vtry.node';
+import vtry from '../vtry.mjs';
 
 test('basics', async(t) => {
   t.plan(8);
