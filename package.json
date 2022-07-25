@@ -1,5 +1,5 @@
 { "name": "vtry",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "tryit + verror = Verbosely try.",
   "keywords": [ "error", "errors", "try" ],
 
@@ -16,7 +16,10 @@
 
   "private": false, "license": "ISC",
 
-  "exports": "vtry.mjs",
+  "exports": {
+    ".": "./vtry.mjs",
+    "./package.json": "./package.json"
+  },
   "main": "vtry.node.js",
   "scripts": { "test": "nodemjs test/all.mjs" },
   "directories": { "test": "test" },
