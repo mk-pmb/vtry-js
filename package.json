@@ -21,7 +21,7 @@
     "./package.json": "./package.json"
   },
   "main": "vtry.node.js",
-  "scripts": { "test": "nodemjs test/all.mjs" },
+  "scripts": { "test": "elp && nodemjs test/all.mjs" },
   "directories": { "test": "test" },
   "eslintConfig": { "extends": "nodejs-pmb" },
 
@@ -30,9 +30,12 @@
     "verror": "^1.10.0"
   },
   "devDependencies": {
-    "eslint-config-nodejs-pmb": "^0.2.0",
-    "nodemjs": "^0.1.9",
-    "p-tape": "^4.0.1",
+    "eslint-config-nodejs-pmb": "^0.3.9",
+    "eslint-plugin-json-light-pmb": "^1.0.7",
+    "eslint-plugin-n": "^17.16.2",
+    "eslint-pretty-pmb": "^1.0.7",
+    "nodemjs": "^0.1.16",
+    "p-tape": "^4.0.2",
     "perish": "^1.0.3",
     "rejected-or-not": "^2.0.0",
     "usnam-pmb": "^0.2.5"

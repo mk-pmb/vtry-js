@@ -28,8 +28,9 @@ function vtry(f, ...a) {
 
 function quoteStack(descr, cutoff, src) {
   let st = String((src || false).stack || src);
-  st = (st && st.split(/\n *(?=at )/).slice(cutoff
-  ).filter(Boolean).join('\n¦ '));
+  if (st) {
+    st = st.split(/\n *(?=at )/).slice(cutoff).filter(Boolean).join('\n¦ ');
+  }
   // Empty stack might result from incompatible error prettyprinting modules.
   return ('\n»»»»» ' + descr + (st ? (' »»»»»\n¦ ' + st + '\n««««« ' + descr)
     : ': (empty)') + ' «««««').replace(/\n/g, '\n    ');
@@ -45,6 +46,7 @@ function makeRethrower(msg, opt) {
     throw err;
   };
 }
+
 
 vtry.makeHandler = function makeVTryingHandler(how, ...args) {
   if (!how) { return () => undefined; }
