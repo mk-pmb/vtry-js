@@ -49,7 +49,7 @@ function makeRethrower(msg, opt) {
 
 
 vtry.makeHandler = function makeVTryingHandler(how, ...args) {
-  if (!how) { return () => undefined; }
+  if ((!how) && (how !== '')) { return () => undefined; }
   if (ifFun(how)) { return err => how(err, ...args); }
   return makeRethrower(how, ...args);
 };
