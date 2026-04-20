@@ -7,6 +7,24 @@ function identity(x) { return x; }
 function reCause(opt, cause) { return { ...(opt || false), cause }; }
 
 
+(function checkNodejsVersionCompat() {
+  const [major, minor] = process.versions.node.split('.').map(Number);
+  const issuesUrl = 'https://github.com/TritonDataCenter/node-verror/issues/';
+  if (major === 24) {
+    if (minor < 14) {
+      const url = issuesUrl + 93;
+      const msg = ('vtry needs verror, but your node.js ' + process.version
+        + ' has a bug that breaks verror.'
+        + ' Please either downgrade to node.js v22.*, or (recommended)'
+        + ' upgrade to node.js v24.14.0 or later. For details, see: ' + url);
+      const err = new Error(msg);
+      err.issuesUrl = url;
+      throw err;
+    }
+  }
+}());
+
+
 function needFunc(f, slotName) {
   if (ifFun(f)) { return true; }
   throw new TypeError(`${slotName || 'f'} must be a function`);
